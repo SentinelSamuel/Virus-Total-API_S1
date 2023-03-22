@@ -14,7 +14,7 @@ chmod +x virustotal-sha256-to-sha1-md5.py
 ## Usage : 
 ### For one sha256 : 
 ```
-virustotal-sha256-to-sha1.py 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc32c7797fe3e7a
+virustotal-sha256-to-sha1.py 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc32c7797fe3e7a --all
 ```
 ![image](https://user-images.githubusercontent.com/114468569/226356799-90b31083-6a6f-40fe-a215-fa4762a877b8.png)
 
