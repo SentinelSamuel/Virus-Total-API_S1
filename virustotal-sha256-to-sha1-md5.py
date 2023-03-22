@@ -9,7 +9,7 @@ from colorama import Fore, Style
 API_KEY = "VIRUS-TOTAL-API-KEY"
 
 # Parameters
-parser = argparse.ArgumentParser(description='Retrieves the SHA1 and MD5 corresponding to a list of SHA256 hashes in a text file')
+parser = argparse.ArgumentParser(description='Retrieve infos about a hash from virustotal')
 parser.add_argument('-f', '--file', dest='file', action="store", type=str, help='Text file containing the SHA256 hashes')
 parser.add_argument('--sha1', action="store_true", help='Get SHA1 from SHA256 on virustotal')
 parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 on virustotal')
