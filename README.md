@@ -22,7 +22,7 @@ virustotal-sha256-to-sha1.py 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc
 ```
 virustotal-sha256-to-sha1.py e5001abcf959b9ac53cf6dc4bb6e699a928fa61cf9fde88eb4405fdc09319a76 ecbc508d4243009ff7d6a222c6b41298df2e99e2e695ce3858be2b1e27cacf9c 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc32c7797fe3e7a --all
 ```
-![image](https://user-images.githubusercontent.com/114468569/226567760-3c0cd28d-c258-43a6-b968-1def61b1f576.png)
+![image](https://user-images.githubusercontent.com/114468569/226892513-adf571eb-ff79-4f15-9d80-3230b521b2d3.png)
 
 Or mutliple sha256 in a text file : 
 ```
