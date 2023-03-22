@@ -16,6 +16,7 @@ parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 on v
 parser.add_argument('--file-type', action="store_true", help='Get file type of the SHA256 on virustotal')
 parser.add_argument('--file-extension', action="store_true", help='Get file extension of the SHA256 on virustotal')
 parser.add_argument('--threat-category', action="store_true", help='Get threat category (ransomware, trojan, ...) of the SHA256 on virustotal')
+parser.add_argument('--last-time', action="store_true", help='Get last time seen threat by virustotal')
 parser.add_argument('--all', action="store_true", help='Get maximum infos of the SHA256 on virustotal')
 parser.add_argument('sha256', nargs='*', help='List of SHA256 hashes')
 
@@ -69,6 +70,7 @@ if args.all:
     args.file_extension = True
     args.sha1 = True
     args.threat_category = True
+    args.last_time = True
 
 # if --file or -f has been used
 if args.file:
@@ -121,6 +123,11 @@ if args.file:
                     successtext("Threat Category : " + tr_category)
                 else:
                     errortext("File extension : No infos") 
+            if args.last_time:
+                if "TimeStamp" in attributes["exiftool"]:
+                    successtext("Last time seen : " + attributes["exiftool"]["TimeStamp"])
+                else:
+                    errortext("Last time seen : No infos")
             # sleep 15 s
             time.sleep(15)
 if args.sha256:
@@ -170,5 +177,10 @@ if args.sha256:
                     successtext("Threat Category : " + tr_category)
                 else:
                     errortext("File extension : No infos") 
+            if args.last_time:
+                if "TimeStamp" in attributes["exiftool"]:
+                    successtext("Last time seen : " + attributes["exiftool"]["TimeStamp"])
+                else:
+                    errortext("Last time seen : No infos")
             # sleep 15 s
             time.sleep(15)
