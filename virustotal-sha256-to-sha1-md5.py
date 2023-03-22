@@ -62,7 +62,7 @@ def successtext(msg) -> str:
     '''
     print(Fore.GREEN + "[+] " + msg + Style.RESET_ALL)
 
-# To get every infos in on param (--all)
+# To get every infos in one param (--all)
 if args.all:
     args.sha1 = True
     args.md5 = True
