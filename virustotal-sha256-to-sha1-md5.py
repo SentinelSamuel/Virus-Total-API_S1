@@ -6,7 +6,7 @@ import time
 import sys
 from colorama import Fore, Style
 
-API_KEY = "API_KEY"
+API_KEY = "VIRUS-TOTAL-API-KEY"
 
 # Parameters
 parser = argparse.ArgumentParser(description='Retrieves the SHA1 and MD5 corresponding to a list of SHA256 hashes in a text file')
@@ -87,7 +87,8 @@ if args.file:
             data = response.json()
             if "data" in data:
                 attributes = data["data"]["attributes"]
-            infotext(f"\nInfos collected on VirusTotal from : {sha256}")
+            print("\n")
+            infotext(f"Infos collected on VirusTotal from : {sha256}")
             successtext("Response from Virustoal succeded")
             if args.sha1:
                 if "sha1" in attributes:
@@ -135,7 +136,8 @@ if args.sha256:
             data = response.json()
             if "data" in data:
                 attributes = data["data"]["attributes"]
-            infotext(f"\nInfos collected on VirusTotal from : {sha256}")
+            print("\n")
+            infotext(f"Infos collected on VirusTotal from : {sha256}")
             successtext("Response from Virustoal succeded")
             if args.sha1:
                 if "sha1" in attributes:
