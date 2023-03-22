@@ -24,10 +24,10 @@ virustotal-sha256-to-sha1.py e5001abcf959b9ac53cf6dc4bb6e699a928fa61cf9fde88eb44
 ```
 ![image](https://user-images.githubusercontent.com/114468569/226892513-adf571eb-ff79-4f15-9d80-3230b521b2d3.png)
 
-Or mutliple sha256 in a text file : 
+Or mutliple sha256 in a text file and printing file extension md5 and sha1 only : 
 ```
-virustotal-sha256-to-sha1.py -f exemple.txt
+virustotal-sha256-to-sha1.py -f exemple.txt --file-extension --md5 --sha1
 # Or 
-virustotal-sha256-to-sha1.py --file exemple.txt
+virustotal-sha256-to-sha1.py --file exemple.txt --file-extension --md5 --sha1
 ```
-![image](https://user-images.githubusercontent.com/114468569/226567548-dd192d3a-f34b-42ea-9450-1002f365aab4.png)
+![image](https://user-images.githubusercontent.com/114468569/226892925-5ae76f53-06ee-4461-a029-d0f352e14034.png)
