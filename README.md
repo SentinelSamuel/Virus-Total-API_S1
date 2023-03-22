@@ -9,7 +9,7 @@ cd PyProjects_S1
 pip install -r requirements.txt
 chmod +x virustotal-sha256-to-sha1-md5.py
 ```
-![image](https://user-images.githubusercontent.com/114468569/226891473-ddef22a4-1ef7-408a-acb6-7acd8adb3558.png)
+![image](https://user-images.githubusercontent.com/114468569/226921890-d7519077-bb25-4193-bf2c-348e4ed1a53e.png)
 
 ## Usage : 
 ### For one sha256 : 
