@@ -17,7 +17,7 @@ parser.add_argument('--file-type', action="store_true", help='Get file type of t
 parser.add_argument('--file-extension', action="store_true", help='Get file extension of the SHA256 on virustotal')
 parser.add_argument('--threat-category', action="store_true", help='Get threat category (ransomware, trojan, ...) of the SHA256 on virustotal')
 parser.add_argument('--last-time', action="store_true", help='Get last time seen threat by virustotal')
-parser.add_argument('--all', action="store_true", help='Get maximum infos of the SHA256 on virustotal')
+parser.add_argument('-a','--all', action="store_true", help='Get maximum infos of the SHA256 on virustotal')
 parser.add_argument('sha256', nargs='*', help='List of SHA256 hashes')
 
 args = parser.parse_args()
