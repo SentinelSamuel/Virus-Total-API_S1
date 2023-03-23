@@ -9,7 +9,7 @@ from colorama import Fore, Style
 API_KEY = "VIRUS-TOTAL-API-KEY"
 
 # Parameters
-parser = argparse.ArgumentParser(description='Retrieve infos about a hash from virustotal')
+parser = argparse.ArgumentParser(description='Retrieves the SHA1 and MD5 corresponding to a list of SHA256 hashes in a text file')
 parser.add_argument('-f', '--file', dest='file', action="store", type=str, help='Text file containing the SHA256 hashes')
 parser.add_argument('--sha1', action="store_true", help='Get SHA1 from SHA256 on virustotal')
 parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 on virustotal')
@@ -26,7 +26,7 @@ args = parser.parse_args()
 def infotext(msg) -> str:
     '''Display informational message on console in blue
 
-    Arguments:
+    Arguments: the creation date, hash, OS, scope, source, user as a verbose option.
 
     msg -- text to be printed
     '''
@@ -62,7 +62,7 @@ def successtext(msg) -> str:
     '''
     print(Fore.GREEN + "[+] " + msg + Style.RESET_ALL)
 
-# To get every infos in one param (--all)
+# To get every infos in on param (--all)
 if args.all:
     args.sha1 = True
     args.md5 = True
@@ -110,7 +110,7 @@ if args.file:
             if args.file_extension:
                 if "FileTypeExtension" in attributes["exiftool"]:
                     successtext("File extension : " + attributes["exiftool"]["FileTypeExtension"])
-                else:
+                else:response
                     errortext("File extension : No infos")
             if args.threat_category:
                 if not None in attributes["popular_threat_classification"]["popular_threat_category"]:
@@ -145,7 +145,7 @@ if args.sha256:
                 attributes = data["data"]["attributes"]
             print("\n")
             infotext(f"Infos collected on VirusTotal from : {sha256}")
-            successtext("Response from Virustoal succeded")
+            successtext("Response from VirusTotal succeded")
             if args.sha1:
                 if "sha1" in attributes:
                     successtext("SHA1 : " + attributes["sha1"])
