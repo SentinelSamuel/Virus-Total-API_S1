@@ -110,7 +110,7 @@ if args.file:
             if args.file_extension:
                 if "FileTypeExtension" in attributes["exiftool"]:
                     successtext("File extension : " + attributes["exiftool"]["FileTypeExtension"])
-                else:response
+                else:
                     errortext("File extension : No infos")
             if args.threat_category:
                 if not None in attributes["popular_threat_classification"]["popular_threat_category"]:
