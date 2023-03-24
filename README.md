@@ -5,7 +5,7 @@ Don't forget to replace VIRUS-TOTAL-API-KEY in virustotal-sha256-to-sha1.py
 ## Installation : 
 ```
 git clone https://github.com/SentinelSamuel/Virus-Total-API_S1.git
-cd PyProjects_S1
+cd Virus-Total-API_S1/
 pip install -r requirements.txt
 chmod +x virustotal-sha256-to-sha1-md5.py
 ```
