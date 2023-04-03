@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-import requests
-import argparse
 import time
-import sys
+import argparse
+import requests
 from colorama import Fore, Style
 
 API_KEY = "VIRUS-TOTAL-API-KEY"
