@@ -8,8 +8,8 @@ from colorama import Fore, Style
 API_KEY = "VIRUS-TOTAL-API-KEY"
 
 # Parameters
-parser = argparse.ArgumentParser(description='Retrieves hashs corresponding to a list of hashes in a text file')
-parser.add_argument('-f', '--file', dest='file', action="store", type=str, help='Text file containing the SHA256 hashes')
+parser = argparse.ArgumentParser(description='Retrieves the hashes corresponding to a list of hashes in a text file')
+parser.add_argument('-f', '--file', dest='file', action="store", type=str, help='Text file containing the Hashes')
 parser.add_argument('--sha1', action="store_true", help='Get SHA1 from SHA256 or MD5 on virustotal')
 parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 or SHA1 on virustotal')
 parser.add_argument('--sha256', action="store_true", help='Get SHA256 from SHA1 or MD5 on virustotal')
@@ -76,9 +76,9 @@ if args.all:
 if args.file:
     # Reading the SHA256 hashes from the text file
     with open(args.file, encoding="utf-8") as f:
-        sha256_list = f.read().splitlines()
+        hash_list = f.read().splitlines()
     # Retrieving infos corresponding for each SHA256
-    for ha in sha256_list:
+    for ha in hash_list:
         # Recover every data from the sha256 in virustotal
         url = f"https://www.virustotal.com/api/v3/files/{ha}"
         headers = {
@@ -135,6 +135,17 @@ if args.file:
                     errortext("Last time seen : No infos")
             # sleep 15 s
             time.sleep(15)
+        elif response.status_code == 400:
+            errortext(f"The API GET request to didn't succeded. Request status : Bad Request {response.status_code} Invalid user input received. See error details for further information."
+                        "\n\n(The HyperText Transfer Protocol (HTTP) 400 Bad Request response status code indicates that the server cannot or will\nnot process the request due to something that is perceived to"
+                        "be a client error (for example, malformed request syntax,\ninvalid request message framing, or deceptive request routing).")
+        elif response.status_code == 404:
+            errortext(f"The API GET request didn't succeded. Request status : HTTP {response.status_code} \n\n"
+            "(In computer network communications, the HTTP 404 error page not found or file not found error message is a hypertext transfer protocol " 
+            "standard response code, to indicate that the browser was able to communicate with a given server, but the server could not find what was requested).")
+        else:
+            errortext(f"Unespected API Error : {response.status_code}")
+
 if args.hashs:
     # Retrieving infos corresponding for each SHA256
     for ha in args.hashs:
@@ -142,7 +153,7 @@ if args.hashs:
         url = f"https://www.virustotal.com/api/v3/files/{ha}"
         headers = {
             "x-apikey": API_KEY
-        } 
+        }
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             data = response.json()
@@ -194,3 +205,13 @@ if args.hashs:
                     errortext("Last time seen : No infos")
             # sleep 15 s
             time.sleep(15)
+        elif response.status_code == 400:
+            errortext(f"The API GET request to didn't succeded. Request status : Bad Request {response.status_code} Invalid user input received. See error details for further information."
+                        "\n\n(The HyperText Transfer Protocol (HTTP) 400 Bad Request response status code indicates that the server cannot or will\nnot process the request due to something that is perceived to"
+                        "be a client error (for example, malformed request syntax,\ninvalid request message framing, or deceptive request routing).")
+        elif response.status_code == 404:
+            errortext(f"The API GET request didn't succeded. Request status : HTTP {response.status_code} \n\n"
+            "(In computer network communications, the HTTP 404 error page not found or file not found error message is a hypertext transfer protocol " 
+            "standard response code, to indicate that the browser was able to communicate with a given server, but the server could not find what was requested).")
+        else:
+            errortext(f"Unespected API Error : {response.status_code}")
