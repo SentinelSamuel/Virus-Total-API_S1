@@ -10,14 +10,15 @@ API_KEY = "VIRUS-TOTAL-API-KEY"
 # Parameters
 parser = argparse.ArgumentParser(description='Retrieves the SHA1 and MD5 corresponding to a list of SHA256 hashes in a text file')
 parser.add_argument('-f', '--file', dest='file', action="store", type=str, help='Text file containing the SHA256 hashes')
-parser.add_argument('--sha1', action="store_true", help='Get SHA1 from SHA256 on virustotal')
-parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 on virustotal')
-parser.add_argument('--file-type', action="store_true", help='Get file type of the SHA256 on virustotal')
-parser.add_argument('--file-extension', action="store_true", help='Get file extension of the SHA256 on virustotal')
-parser.add_argument('--threat-category', action="store_true", help='Get threat category (ransomware, trojan, ...) of the SHA256 on virustotal')
+parser.add_argument('--sha1', action="store_true", help='Get SHA1 from SHA256 or MD5 on virustotal')
+parser.add_argument('--md5', action="store_true", help='Get MD5 from SHA256 or SHA1 on virustotal')
+parser.add_argument('--sha256', action="store_true", help='Get SHA256 from SHA1 or MD5 on virustotal')
+parser.add_argument('--file-type', action="store_true", help='Get file type of the Hash on virustotal')
+parser.add_argument('--file-extension', action="store_true", help='Get file extension of the Hash on virustotal')
+parser.add_argument('--threat-category', action="store_true", help='Get threat category (ransomware, trojan, ...) of the Hash on virustotal')
 parser.add_argument('--last-time', action="store_true", help='Get last time seen threat by virustotal')
-parser.add_argument('-a','--all', action="store_true", help='Get maximum infos of the SHA256 on virustotal')
-parser.add_argument('sha256', nargs='*', help='List of SHA256 hashes')
+parser.add_argument('-a','--all', action="store_true", help='Get maximum infos of the Hash on virustotal')
+parser.add_argument('hashs', nargs='*', help='List of hashes (can be : sha256,md5,sha1)')
 
 args = parser.parse_args()
 
@@ -65,9 +66,9 @@ def successtext(msg) -> str:
 if args.all:
     args.sha1 = True
     args.md5 = True
+    args.sha256 = True
     args.file_type = True
     args.file_extension = True
-    args.sha1 = True
     args.threat_category = True
     args.last_time = True
 
@@ -77,9 +78,9 @@ if args.file:
     with open(args.file, encoding="utf-8") as f:
         sha256_list = f.read().splitlines()
     # Retrieving infos corresponding for each SHA256
-    for sha256 in sha256_list:
+    for ha in sha256_list:
         # Recover every data from the sha256 in virustotal
-        url = f"https://www.virustotal.com/api/v3/files/{sha256}"
+        url = f"https://www.virustotal.com/api/v3/files/{ha}"
         headers = {
             "x-apikey": API_KEY
         }
@@ -89,8 +90,13 @@ if args.file:
             if "data" in data:
                 attributes = data["data"]["attributes"]
             print("\n")
-            infotext(f"Infos collected on VirusTotal from : {sha256}")
+            infotext(f"Infos collected on VirusTotal from : {ha}")
             successtext("Response from Virustoal succeded")
+            if args.sha256:
+                if "sha256" in attributes:
+                    successtext("SHA256 : " + attributes["sha256"])
+                else:
+                    errortext("SHA256 : No infos")
             if args.sha1:
                 if "sha1" in attributes:
                     successtext("SHA1 : " + attributes["sha1"])
@@ -129,11 +135,11 @@ if args.file:
                     errortext("Last time seen : No infos")
             # sleep 15 s
             time.sleep(15)
-if args.sha256:
+if args.hashs:
     # Retrieving infos corresponding for each SHA256
-    for sha256 in args.sha256:
+    for ha in args.hashs:
         # Recover every data from the sha256 in virustotal
-        url = f"https://www.virustotal.com/api/v3/files/{sha256}"
+        url = f"https://www.virustotal.com/api/v3/files/{ha}"
         headers = {
             "x-apikey": API_KEY
         } 
@@ -143,8 +149,13 @@ if args.sha256:
             if "data" in data:
                 attributes = data["data"]["attributes"]
             print("\n")
-            infotext(f"Infos collected on VirusTotal from : {sha256}")
+            infotext(f"Infos collected on VirusTotal from : {ha}")
             successtext("Response from VirusTotal succeded")
+            if args.sha256:
+                if "sha256" in attributes:
+                    successtext("SHA256 : " + attributes["sha256"])
+                else:
+                    errortext("SHA256 : No infos")
             if args.sha1:
                 if "sha1" in attributes:
                     successtext("SHA1 : " + attributes["sha1"])
