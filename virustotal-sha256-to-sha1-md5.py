@@ -74,7 +74,7 @@ if args.all:
 # if --file or -f has been used
 if args.file:
     # Reading the SHA256 hashes from the text file
-    with open(args.file) as f:
+    with open(args.file, encoding="utf-8") as f:
         sha256_list = f.read().splitlines()
     # Retrieving infos corresponding for each SHA256
     for sha256 in sha256_list:
@@ -82,7 +82,7 @@ if args.file:
         url = f"https://www.virustotal.com/api/v3/files/{sha256}"
         headers = {
             "x-apikey": API_KEY
-        } 
+        }
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             data = response.json()
