@@ -9,7 +9,7 @@ cd Virus-Total-API_S1/
 pip install -r requirements.txt
 chmod +x virustotal-sha256-to-sha1-md5.py
 ```
-![image](https://user-images.githubusercontent.com/114468569/226921890-d7519077-bb25-4193-bf2c-348e4ed1a53e.png)
+![image](https://user-images.githubusercontent.com/114468569/229522908-f09e53eb-fc5b-42c1-94f0-37bb080e0e11.png)
 
 ## Usage : 
 ### For one sha256 : 
