@@ -113,15 +113,15 @@ if args.file:
                     errortext("File extension : No infos")
             if args.threat_category:
                 if not None in attributes["popular_threat_classification"]["popular_threat_category"]:
-                    tr_category = ""
+                    TR_CATEGORY = ""
                     for t_category in attributes["popular_threat_classification"]["popular_threat_category"]:
-                        if tr_category == "":
-                            tr_category = t_category["value"]
+                        if TR_CATEGORY == "":
+                            TR_CATEGORY = t_category["value"]
                         else:
-                            tr_category = tr_category + ", " + t_category["value"]
-                    successtext("Threat Category : " + tr_category)
+                            TR_CATEGORY = TR_CATEGORY + ", " + t_category["value"]
+                    successtext("Threat Category : " + TR_CATEGORY)
                 else:
-                    errortext("File extension : No infos") 
+                    errortext("File extension : No infos")
             if args.last_time:
                 if "TimeStamp" in attributes["exiftool"]:
                     successtext("Last time seen : " + attributes["exiftool"]["TimeStamp"])
@@ -167,15 +167,15 @@ if args.sha256:
                     errortext("File extension : No infos")
             if args.threat_category:
                 if not None in attributes["popular_threat_classification"]["popular_threat_category"]:
-                    tr_category = ""
+                    TR_CATEGORY = ""
                     for t_category in attributes["popular_threat_classification"]["popular_threat_category"]:
-                        if tr_category == "":
-                            tr_category = t_category["value"]
+                        if TR_CATEGORY == "":
+                            TR_CATEGORY = t_category["value"]
                         else:
-                            tr_category = tr_category + ", " + t_category["value"]
-                    successtext("Threat Category : " + tr_category)
+                            TR_CATEGORY = TR_CATEGORY + ", " + t_category["value"]
+                    successtext("Threat Category : " + TR_CATEGORY)
                 else:
-                    errortext("File extension : No infos") 
+                    errortext("File extension : No infos")
             if args.last_time:
                 if "TimeStamp" in attributes["exiftool"]:
                     successtext("Last time seen : " + attributes["exiftool"]["TimeStamp"])
