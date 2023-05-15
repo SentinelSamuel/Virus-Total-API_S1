@@ -1,4 +1,17 @@
-# PyProjects_S1
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/114468569/236483898-d9d94370-3a77-4262-8349-f592b859f3f9.png" alt="drawing" style="width:400px;">
+</p>
+
+<div align="center">
+    <h1> 
+        PyProjects_S1
+    </h1>
+</div>
+
+
+<p align="center">
+    Retrieves the hashes corresponding to a list of hashes in a text file <br/>
+</p>
 
 Don't forget to replace VIRUS-TOTAL-API-KEY in virustotal-sha256-to-sha1.py
 
