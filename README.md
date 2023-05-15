@@ -4,7 +4,7 @@
 
 <div align="center">
     <h1> 
-        PyProjects_S1
+        Virus-Total API S1
     </h1>
 </div>
 
