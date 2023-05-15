@@ -12,7 +12,11 @@
 <p align="center">
     Retrieves the hashes corresponding to a list of hashes in a text file <br/>
 </p>
-</b></b></b>
+</b>
+</b>
+</b>
+
+
 Don't forget to replace VIRUS-TOTAL-API-KEY in virustotal-sha256-to-sha1.py
 
 ## Installation : 
