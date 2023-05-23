@@ -18,7 +18,7 @@
 
 Don't forget to replace VIRUS-TOTAL-API-KEY in virustotal-sha256-to-sha1.py
 
-## Installation : 
+## 1) Installation : 
 ```
 git clone https://github.com/SentinelSamuel/Virus-Total-API_S1.git
 cd Virus-Total-API_S1/
@@ -27,14 +27,14 @@ chmod +x virustotal-sha256-to-sha1-md5.py
 ```
 ![image](https://user-images.githubusercontent.com/114468569/229522908-f09e53eb-fc5b-42c1-94f0-37bb080e0e11.png)
 
-## Usage : 
-### For one sha256 : 
+## 2) Usage : 
+### a) For one sha256 : 
 ```
 virustotal-sha256-to-sha1.py 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc32c7797fe3e7a --all
 ```
 ![image](https://user-images.githubusercontent.com/114468569/229522548-2f762810-50ed-4573-a3a9-e74e7116c506.png)
 
-### For multiple sha256 : 
+### b) For multiple sha256 : 
 ```
 virustotal-sha256-to-sha1.py e5001abcf959b9ac53cf6dc4bb6e699a928fa61cf9fde88eb4405fdc09319a76 ecbc508d4243009ff7d6a222c6b41298df2e99e2e695ce3858be2b1e27cacf9c 8c6a0698e75ed567d22079534fd962c7b9f59ae5cdaf7c5dccc32c7797fe3e7a --all
 ```
